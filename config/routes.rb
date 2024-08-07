@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
-  get 'home/list', to: 'home#list', as: 'list_home'
+  get 'user/list', to: 'user#list', as: 'list_user'
 
-  resources :users
-  resources :home, only: [:index]
   
-  root 'home#index'
+ # resources :home
+  
+  root 'user#index'
+  resources :user, except: [:show]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
