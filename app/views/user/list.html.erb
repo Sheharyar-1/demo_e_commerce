@@ -1,0 +1,26 @@
+<h1>All Users</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="ID">ID</th>
+      <th scope="Name">Name</th>
+      <th scope="Email">Email</th>
+      <th scope="role">Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each_with_index do |user, index| %>
+      <tr>
+        <td><%=index+1%></td>
+        <td><%=user.name%></td>
+        <td><%=user.email%></td>
+        <td><%=user.role%></td>
+        <td><%= link_to "Edit", edit_user_path(user), class: "btn btn-success"%></td>
+        <td><%= button_to "Delete", user_path(user), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %></td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
+
+<%= link_to "New User", new_user_path , class: 'btn btn-primary'%>
