@@ -12,6 +12,7 @@ class UserController < ApplicationController
     @user=User.new(user_params)
 
     if @user.save
+      @user.send_reset_password_instructions
       redirect_to list_user_path
     else
       flash[:danger] = "Could not create a user."
@@ -26,7 +27,7 @@ class UserController < ApplicationController
 
   def update
     @user=User.find(params[:id])
-    if @user.update(user_params)
+    if @user.update(update_params)
       redirect_to list_user_path
     else
       render :edit, status: :unprocessable_entity
@@ -41,6 +42,10 @@ class UserController < ApplicationController
     redirect_to list_user_path, status: :see_other
   end
   private
+    def update_params
+      params.require(:user).permit(:name, :role)
+    end
+
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :role)
     end
