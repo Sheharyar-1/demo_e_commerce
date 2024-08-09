@@ -1,0 +1,16 @@
+<div class="row">
+  <% @products.each do |p| %>
+    <div class="col-md-2 mb-2">
+      <div class="card h-100">
+        <%= image_tag(p.photo, class: "card-img-top", alt: "Card image cap") %>
+        <div class="card-body">
+          <h4 class="card-title text-center"><%= p.name %></h4>
+          <p class="card-text"><%= p.description %></p>
+        </div>
+        <div class="card-footer">
+          <h5 class="card-text text-center"><%=p.price%>$</small></h5>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

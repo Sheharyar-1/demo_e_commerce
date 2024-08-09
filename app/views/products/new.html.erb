@@ -1,0 +1,35 @@
+<%= form_with model: @product, url: products_path, method: :post do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price %>
+    <%= f.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= f.label :total_quantity %>
+    <%= f.number_field :total_quantity %>
+  </div>
+
+  <div class="field">
+    <%= f.label :quantity_in_stock %>
+    <%= f.number_field :quantity_in_stock %>
+  </div>
+
+  <div class="field">
+    <%= f.label :photo %>
+    <%= f.file_field :photo %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
