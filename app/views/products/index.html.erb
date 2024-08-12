@@ -1,4 +1,8 @@
-<h1>Products</h1>
-<%= render "card"%>
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1 class="text-center w-100">Products</h1>
+  <%= link_to "New", new_product_path, class: "btn btn-primary me-4" %>
+</div>
 
-<%= link_to "New", new_product_path %>
+<div>
+  <%= render "card" %>
+</div>

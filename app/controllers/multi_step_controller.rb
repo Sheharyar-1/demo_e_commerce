@@ -29,6 +29,10 @@ class MultiStepController < ApplicationController
   
   def product_params_image
     params.require(:product).permit(:photo)
-  end  
+  end
+
+  def finish_wizard_path
+    product_path(@product)
+  end
 
 end

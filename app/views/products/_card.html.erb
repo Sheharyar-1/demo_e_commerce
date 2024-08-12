@@ -4,13 +4,15 @@
       <div class="card h-100">
         <% if p.photo.attached? %>
           <%= image_tag(p.photo, class: "card-img-top", alt: "Card image cap") %>
+        <%else%>
+          <%= image_tag("no.jpg", class: "card-img-top", alt: "Card image cap") %>
         <%end%>
         <div class="card-body">
           <h4 class="card-title text-center"><%= p.name %></h4>
           <p class="card-text"><%= p.description %></p>
         </div>
-        <div class="card-footer">
-          <h5 class="card-text text-center"><%=p.price%>$</small></h5>
+        <div class="card-footer text-center">
+          <%= link_to "#{p.price}$", product_path(p), class: "btn btn-primary" %>
         </div>
       </div>
     </div>

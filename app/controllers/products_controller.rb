@@ -4,6 +4,10 @@ class ProductsController < ApplicationController
     @products =Product.all
   end
 
+  def show 
+    @product =Product.find(params[:id])
+  end
+
   def new
     @product = Product.new
   end
@@ -43,4 +47,5 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :description, :price)
   end
+  
 end

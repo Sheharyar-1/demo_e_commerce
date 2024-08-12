@@ -1,12 +1,19 @@
-<div class="row">
-  <div class="col-md-2 mb-2">
-    <div class="card h-100">
-      <div class="card-body">
-        <h4 class="card-title text-center"><%@product.name%></h4>
-        <p class="card-text"><%= @product.description %></p>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <%= image_tag(@product.photo, class: "card-img-top", alt: @product.name) %>
       </div>
-      <div class="card-footer">
-        <h5 class="card-text text-center"><%=@product.price%>$</small></h5>
+    </div>
+    <div class="col-md-8">
+      <div class="card h-100">
+        <div class="card-body">
+          <h2 class="card-title"><%= @product.name %></h2>
+          <p class="card-text"><%= @product.description %></p>
+          <h4 class="card-text text-danger"><%= @product.price %>$</h4>
+            <%= link_to "Edit", edit_product_path(@product), class: "btn btn-primary mt-3" %>
+            <%= button_to "Destroy", product_path(@product), class: "btn btn-danger mt-3", method: :delete, data: { confirm: "Are you sure?" } %>
+        </div>
       </div>
     </div>
   </div>
