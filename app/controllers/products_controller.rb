@@ -9,15 +9,15 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product=Product.new(product_params)
+    @product = Product.new(product_params)
     if @product.save
-      redirect_to products_path
+      redirect_to product_multi_step_index_path(@product)
     else
-      flash[:danger] ="Could not create a product"
+      flash[:danger] = "Could not create a product"
       redirect_to new_product_path
     end
   end
-
+  
   def edit
     @product=Product.find(params[:id])
   end
@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
   def update
     @product=Product.find(params[:id])
     if @product.update(product_params)
-      redirect_to products_path
+      redirect_to product_multi_step_index_path(@product)
     else
       flash[:notice]="Could not update product"
       redirect_to edit_product_path
@@ -41,6 +41,6 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:name, :description, :photo, :price, :total_quantity, :stock)
+    params.require(:product).permit(:name, :description, :price)
   end
 end
