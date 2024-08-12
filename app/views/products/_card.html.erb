@@ -1,6 +1,8 @@
-<div class="row">
+<div class="container mt-4">
+
+  <div class="row">
   <% @products.each do |p| %>
-    <div class="col-md-2 mb-2">
+    <div class="col-md-3 mb-4">
       <div class="card h-100">
         <% if p.photo.attached? %>
           <%= image_tag(p.photo, class: "card-img-top", alt: "Card image cap") %>
@@ -13,8 +15,10 @@
         </div>
         <div class="card-footer text-center">
           <%= link_to "#{p.price}$", product_path(p), class: "btn btn-primary" %>
+          <p class="card-text"><%= p.total_quantity %></p>
         </div>
       </div>
     </div>
   <% end %>
+  </div>
 </div>

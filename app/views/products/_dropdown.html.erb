@@ -1,0 +1,12 @@
+<div class="container mt-4">
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+      Filter Products
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <li><%= link_to 'Price: Low to High', products_path(sort: 'price_asc'), class: 'dropdown-item' %></li>
+      <li><%= link_to 'Price: High to Low', products_path(sort: 'price_desc'), class: 'dropdown-item' %></li>
+      <li><%= link_to 'By Name', products_path(sort: 'name_asc'), class: 'dropdown-item' %></li>
+    </ul>
+  </div>
+</div>

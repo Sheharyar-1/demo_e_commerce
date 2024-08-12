@@ -1,7 +1,19 @@
 class ProductsController < ApplicationController
 
   def index
-    @products =Product.all
+    @q = Product.ransack(params[:q])
+    @products = @q.result(distinct: true)
+
+    case params.dig(:q, :s)
+    when 'price asc'
+      @products = @products.order(price: :asc)
+    when 'price desc'
+      @products = @products.order(price: :desc)
+    when 'name asc'
+      @products = @products.order(name: :asc)
+    else
+      @products = @products.order(created_at: :desc)
+    end
   end
 
   def show 
@@ -47,5 +59,5 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :description, :price)
   end
-  
+
 end
