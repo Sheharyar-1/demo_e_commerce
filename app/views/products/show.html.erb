@@ -11,8 +11,13 @@
           <h2 class="card-title"><%= @product.name %></h2>
           <p class="card-text"><%= @product.description %></p>
           <h4 class="card-text text-danger"><%= @product.price %>$</h4>
-            <%= link_to "Edit", edit_product_path(@product), class: "btn btn-primary mt-3" %>
-            <%= button_to "Destroy", product_path(@product), class: "btn btn-danger mt-3", method: :delete, data: { confirm: "Are you sure?" } %>
+            <%if current_user.admin? || current_user.staff?%>
+              <%= link_to "Update", edit_product_path(@product), class: "btn btn-primary mt-3" %>
+            <%end%>
+
+            <%if current_user.admin?%>
+              <%= button_to "Destroy", product_path(@product), class: "btn btn-danger mt-3", method: :delete, data: { confirm: "Are you sure?" } %>
+            <%end%>
         </div>
       </div>
     </div>

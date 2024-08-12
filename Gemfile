@@ -61,6 +61,7 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem "byebug", "~> 11.1"
 end
 
 group :test do
@@ -72,3 +73,11 @@ end
 gem "devise", "~> 4.9"
 
 gem "mailcatcher", "~> 0.2.4"
+
+gem "image_processing", "~> 1.13"
+
+
+
+gem "wicked", "~> 2.0"
+
+gem "ransack", "~> 4.2"
