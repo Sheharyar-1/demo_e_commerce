@@ -1,16 +1,14 @@
 class MultiStepController < ApplicationController
   include Wicked::Wizard
-
+  before_action :set_product, only: [:show, :update]
   steps :stock, :image
 
   def show
-    @product=Product.find(params[:product_id])
     render_wizard
   end
 
   def update
-    @product = Product.find(params[:product_id])
-  
+   
     case step
     when :stock
       @product.assign_attributes(product_params_stock)
@@ -22,6 +20,10 @@ class MultiStepController < ApplicationController
   end
   
   private
+
+  def set_product
+    @product = Product.find(params[:product_id])
+  end
   
   def product_params_stock
     params.require(:product).permit(:total_quantity, :stock)

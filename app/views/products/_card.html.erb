@@ -6,9 +6,9 @@
       <div class="card h-100">
         <% if p.photo.attached? %>
           <%= image_tag(p.photo, class: "card-img-top", alt: "Card image cap") %>
-        <%else%>
+        <% else %>
           <%= image_tag("no.jpg", class: "card-img-top", alt: "Card image cap") %>
-        <%end%>
+        <% end %>
         <div class="card-body">
           <h4 class="card-title text-center"><%= p.name %></h4>
           <p class="card-text"><%= p.description %></p>

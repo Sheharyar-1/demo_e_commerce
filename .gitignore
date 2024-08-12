@@ -39,5 +39,3 @@
 
 /node_modules
 .byebug_history
-/app/helpers
-/app/assets

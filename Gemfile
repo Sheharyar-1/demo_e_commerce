@@ -76,8 +76,6 @@ gem "mailcatcher", "~> 0.2.4"
 
 gem "image_processing", "~> 1.13"
 
-
-
 gem "wicked", "~> 2.0"
 
 gem "ransack", "~> 4.2"
