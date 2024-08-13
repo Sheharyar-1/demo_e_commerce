@@ -1,0 +1,3 @@
+<%= form_with model: @product, url: product_path, method: :patch do |f| %>
+  <%= render partial: 'product_form', locals: { f: f } %>
+<% end %>

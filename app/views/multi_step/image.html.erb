@@ -1,0 +1,26 @@
+<%= form_with model: @product, url: wizard_path do |f| %>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h1>Product Image</h1>
+
+            <div class="mb-3">
+              <%= f.label :photo, class: 'form-label' %>
+              <%= f.file_field :photo, class: 'form-control', required: true %>
+              <div class="invalid-feedback">
+                Please upload a product photo.
+              </div>
+            </div>
+
+            <div>
+              <%= f.submit 'Submit', class: 'btn btn-primary' %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
