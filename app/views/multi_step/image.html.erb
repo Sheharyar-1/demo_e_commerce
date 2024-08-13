@@ -1,14 +1,20 @@
-<%= form_with model: @product, url: wizard_path do |f| %>
+<%= form_with model: @product, url: wizard_path, local: true, html: { id: 'product-form' } do |f| %>
   <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-6">
         <div class="card">
           <div class="card-body">
             <h1>Product Image</h1>
+            <div class="mb-3">
+              <% if @product.photo.attached? %>
+                <%= image_tag(url_for(@product.photo), class: "card-img-top", alt: "Product image", style: "width: 100%; height: auto; object-fit: cover;") %>
+              <% end %>
+              <img id="photo-preview" src="" alt="Image preview" style="display: none; width: 100%; height: auto; object-fit: cover;" />
+            </div>
 
             <div class="mb-3">
               <%= f.label :photo, class: 'form-label' %>
-              <%= f.file_field :photo, class: 'form-control', required: true %>
+              <%= f.file_field :photo, class: 'form-control', id: 'photo-input' %>
               <div class="invalid-feedback">
                 Please upload a product photo.
               </div>
