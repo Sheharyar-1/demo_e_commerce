@@ -19,6 +19,11 @@
 
     <% if user_signed_in? %>
       <ul class="navbar-nav ms-auto">
+        <li class="cart me-4">
+          <%= link_to carts_path do %>
+            <%= image_tag("cart.png", alt: "Cart", style: "width: 40px; height: auto;") %>
+          <% end %>
+        </li>
         <%= button_to 'Log-out', destroy_user_session_path, method: :delete, class: 'btn btn-danger me-3' %>
       </ul>
     <% else %>

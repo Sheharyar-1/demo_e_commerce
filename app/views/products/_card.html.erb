@@ -1,7 +1,7 @@
 <div class="container mt-4">
   <div class="row">
     <% @products.each do |p| %>
-      <div class="col-md-4 mb-4">
+      <div class="col-md-3 mb-4">
         <%= link_to product_path(p), class: "card h-100 text-decoration-none border shadow-sm" do %>
           <% if p.photo.attached? %>
             <%= image_tag(p.photo, class: "card-img-top", alt: "Product image", style: "height: 200px; object-fit: cover;") %>
@@ -12,12 +12,12 @@
             <h4 class="card-title text-dark mb-2"><%= p.name %></h4>
             <p class="card-text text-muted mb-2" style="flex-grow: 1;"><%= p.description %></p>
             <p class="h5 text-danger mb-2"><strong><%= number_to_currency(p.price, unit: "$") %></strong></p>
-            <% if p.stock > 10 %>
-              <p class="card-text text-success mb-2">In Stock</p>
-            <% elsif p.stock > 0 %>
-              <p class="card-text text-warning mb-2">Only <%= p.stock %> left in stock</p>
-            <% else %>
+            <% if p.stock.nil? || p.stock <= 0 %>
               <p class="card-text text-danger mb-2">Out of Stock</p>
+            <% elsif p.stock > 10 %>
+              <p class="card-text text-success mb-2">In Stock</p>
+            <% else %>
+              <p class="card-text text-warning mb-2">Only <%= p.stock %> left in stock</p>
             <% end %>
           </div>
           <div class="card-footer text-center">
