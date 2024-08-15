@@ -25,9 +25,13 @@
               <%= button_to "Destroy", product_path(@product), class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?" } %>
             <% end %>
           </div>
-
-          <!-- Optional: Add a Buy Now button or other actions -->
-          <%= button_to 'Buy Now', product_path(@product), class: 'btn btn-success w-100', method: :get %>
+          <%= form_for (@order_item) do |f| %>
+            <%= f.hidden_field :product_id, value: @product.id%>
+            <div class="form-group">
+              <%= f.text_field :quantity, vlaue: 1, min: 1, class: "form-control" %>
+            </div>
+            <%= f.submit "Add to Cart", class: "btn btn-success w-100 mt-3" %>
+          <% end %>
         </div>
       </div>
     </div>
