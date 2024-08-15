@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
 
   def index
     @q = Product.ransack(params[:q])
-    @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 3)
+    @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 4)
 
     case params.dig(:q, :s)
     when 'price asc'
@@ -17,7 +17,9 @@ class ProductsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @order_item =current_order.order_items.new
+  end
 
   def new
     @product = Product.new
