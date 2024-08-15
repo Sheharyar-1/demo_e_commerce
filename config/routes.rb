@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
   resources :user, except: [:show]
+  resources :order_items
+  resource :carts, only: [:show]
 
   resources :products do 
     resources :multi_step
