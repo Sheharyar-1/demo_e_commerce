@@ -1,39 +1,25 @@
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-md-12">
-      <%= search_form_for @q, url: products_path, method: :get, local: true, class: "mb-4" do |f| %>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="form-group">
-              <%= f.label :name_cont, "Search by Name", class: "form-label" %>
-              <%= f.search_field :name_cont, class: "form-control" %>
-            </div>
+<div class="col-md-3">
+      <div class="card p-4">
+        <h5 class="card-title mb-4">Filter By</h5>
+        <%= search_form_for @q, url: products_path, method: :get, local: true, class: "filter-form" do |f| %>
+          <div class="mb-3">
+            <%= f.label :name_cont, "Search by Name", class: "form-label" %>
+            <%= f.search_field :name_cont, class: "form-control" %>
           </div>
-          <div class="col-md-4">
-            <div class="form-group">
-              <%= f.label :price_gteq, "Min Price", class: "form-label" %>
-              <%= f.number_field :price_gteq, class: "form-control", step: "0.01" %>
-            </div>
+          <div class="mb-3">
+            <%= f.label :price_gteq, "Min Price", class: "form-label" %>
+            <%= f.number_field :price_gteq, class: "form-control", step: "0.01" %>
           </div>
-          <div class="col-md-4">
-            <div class="form-group">
-              <%= f.label :price_lteq, "Max Price", class: "form-label" %>
-              <%= f.number_field :price_lteq, class: "form-control", step: "0.01" %>
-            </div>
+          <div class="mb-3">
+            <%= f.label :price_lteq, "Max Price", class: "form-label" %>
+            <%= f.number_field :price_lteq, class: "form-control", step: "0.01" %>
           </div>
-          <div class="col-md-4 mt-4">
-            <div class="form-group">
-              <%= f.label :s, "Sort By", class: "form-label" %>
-              <%= f.select :s, [['Price Low to High', 'price asc'], ['Price High to Low', 'price desc'], ['Name A to Z', 'name asc']], {}, class: "form-control" %>
-            </div>
+          <div class="mb-3">
+            <%= f.label :s, "Sort By", class: "form-label" %>
+            <%= f.select :s, [['Price Low to High', 'price asc'], ['Price High to Low', 'price desc'], ['Name A to Z', 'name asc']], {}, class: "form-control" %>
           </div>
-          <div class="col-md-4 mt-4">
-            <div class="form-group">
-              <%= f.submit 'Filter', class: "btn btn-primary" %>
-            </div>
-          </div>
-        </div>
-      <% end %>
+          <%= f.submit 'Apply Filters', class: "btn btn-primary w-100" %>
+        <% end %>
+      </div>
     </div>
-  </div>
-</div>
+    

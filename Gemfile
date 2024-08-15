@@ -79,3 +79,5 @@ gem "image_processing", "~> 1.13"
 gem "wicked", "~> 2.0"
 
 gem "ransack", "~> 4.2"
+
+gem 'will_paginate-bootstrap4'

@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
 
   def index
     @q = Product.ransack(params[:q])
-    @products = @q.result(distinct: true)
+    @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 3)
 
     case params.dig(:q, :s)
     when 'price asc'
