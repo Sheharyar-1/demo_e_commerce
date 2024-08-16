@@ -1,0 +1,49 @@
+<div class="container mt-4">
+  <% if !@order_item.nil? && @order_item.errors.any? %>
+    <div class="alert alert-danger">
+      <ul>
+        <% @order_item.errors.full_messages.each do |m| %>
+          <li><%= m %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% if @order_items.size > 0 %>
+    <% @order_items.each do |f| %>
+      <div class="card mb-4 border-light shadow-lg rounded-lg">
+        <div class="row g-3">
+          <div class="col-md-4">
+            <%= image_tag(f.product.photo, class: "img-fluid rounded", alt: "Product image", style: "object-fit: cover; height: 200px; width: 100%; border: 1px solid #e0e0e0;") %>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h4 class="card-title text-dark mb-2 font-weight-bold"><%= f.product.name %></h4>
+              <p class="card-text text-danger h5 mb-3"><strong><%= number_to_currency(f.product.price, unit: "$") %></strong></p>
+              <p class="card-text text-muted mb-4">Available Stock: <%= f.product.stock %></p>
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <%= form_for(f, remote: true, html: { class: "d-flex align-items-center" }) do |i| %>
+                  <%= i.hidden_field :product_id, value: f.product_id %>
+                  <div class="input-group me-2" style="width: 120px;">
+                    <%= i.number_field :quantity, value: f.quantity.to_i, min: 1, class: "form-control" %>
+                  </div>
+                  <%= i.submit "Update", class: "btn btn-primary ms-2 text-uppercase font-weight-bold" %>
+                <% end %>
+                <span class="fw-bold text-dark h5">Total: <%= number_to_currency(f.total_price, unit: "$") %></span>
+                <%= button_to "Remove", order_item_path(f), method: :delete, remote: true, class: "btn btn-danger ms-3" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <div class="total-amount text-end mt-4">
+      <h4 class="fw-bold text-dark">Total Amount: <%= number_to_currency(current_order.subtotal, unit: "$") %></h4>
+    </div>
+  <% else %>
+    <div class="empty-cart text-center mt-5">
+      <h2 class="text-muted mb-4">Your Cart is Empty</h2>
+      <p class="text-muted mb-4">Looks like you haven't added anything to your cart yet.</p>
+      <%= link_to "Continue Shopping", products_path, class: "btn btn-primary btn-lg text-uppercase font-weight-bold" %>
+    </div>
+  <% end %>
+</div>
