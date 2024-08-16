@@ -12,8 +12,8 @@ class Order < ApplicationRecord
     end.sum
   end
   
-
   private
+  
   def set_subtotal
     self[:subtotal] = subtotal
   end
