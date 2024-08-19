@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :user, except: [:show]
   resources :order_items
   resource :carts, only: [:show]
-  resources :orders, only: [:index]
+  resources :orders, only: [:index, :update]
   resources :products do 
     resources :multi_step
   end
