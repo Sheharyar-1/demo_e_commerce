@@ -38,6 +38,8 @@
     <% end %>
     <div class="total-amount text-end mt-4">
       <h4 class="fw-bold text-dark">Total Amount: <%= number_to_currency(current_order.subtotal, unit: "$") %></h4>
+      <%= button_to 'Place Order', placed_order_path(@order), method: :patch, class: 'btn btn-primary btn-lg text-uppercase font-weight-bold', data: { confirm: 'Are you sure you want to place this order?' } %>
+
     </div>
   <% else %>
     <div class="empty-cart text-center mt-5">
