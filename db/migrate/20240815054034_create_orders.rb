@@ -3,7 +3,8 @@ class CreateOrders < ActiveRecord::Migration[7.1]
     create_table :orders do |t|
       t.float :subtotal
       t.float :total
-      t.float :shipping
+      t.string :shipping
+      t.string :billing
       t.belongs_to :user
       t.integer :status, default: 0
 
