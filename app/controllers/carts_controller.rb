@@ -6,6 +6,7 @@ class CartsController < ApplicationController
   def placed
     @order = current_order
     if @order.in_progress?
+      OrderMailMailer.confirmation(@order).deliver_now
       @order.update(order_params.merge(status: :placed))
       redirect_to carts_path, notice: 'Order was successfully placed.'
     else
