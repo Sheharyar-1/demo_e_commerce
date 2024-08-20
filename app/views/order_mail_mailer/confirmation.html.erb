@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmation</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+  <div class="container my-5">
+    <div class="card">
+      <div class="card-header bg-dark text-white text-center">
+        <h1 class="h4">Order Confirmation</h1>
+      </div>
+      <div class="card-body">
+        <h2 class="h5">Hello, <%= @user.name %>!</h2>
+        <p class="mb-4">Thank you for your order! Your order number is <strong>#<%= @order.id %></strong>.</p>
+
+        <div class="order-details">
+          <h3 class="h6">Order Details:</h3>
+          <% @order.order_items.each do |item| %>
+            <div class="order-item border-bottom py-2">
+              <strong><%= item.product.name %></strong><br>
+              Quantity: <%= item.quantity %><br>
+              Price: <%= number_to_currency(item.product.price) %><br>
+            </div>
+          <% end %>
+        </div>
+
+        <p class="mt-4"><strong>Total Amount:</strong> <%= number_to_currency(@order.subtotal) %></p>
+        <p>We will notify you once your order has been shipped.</p>
+        <p>Thanks for shopping with us!</p>
+      </div>
+
+      <div class="card-footer text-center text-muted">
+        &copy; <%= Date.today.year %> Your Store. All rights reserved.
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

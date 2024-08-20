@@ -36,7 +36,7 @@
                 <%= link_to "Update", edit_product_path(@product), class: "btn btn-primary btn-lg" %>
               <% end %>
               <% if current_user.admin? %>
-                <%= button_to "Destroy", product_path(@product), class: "btn btn-danger btn-lg", method: :delete, data: { confirm: "Are you sure?" } %>
+                <%= button_to "Delete", product_path(@product), class: "btn btn-danger btn-lg", method: :delete, data: { confirm: "Are you sure?" } %>
               <% end %>
             <% end %>
           </div>
