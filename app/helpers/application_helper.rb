@@ -1,4 +1,5 @@
 module ApplicationHelper
+  
   def current_order
     if session[:order_id]
       order = current_user.order.find_by(id: session[:order_id])
