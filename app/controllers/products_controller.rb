@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-
+  load_and_authorize_resource
+  
   def index
     @q = Product.ransack(params[:q])
     @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 5)
@@ -18,7 +19,8 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @order_item =current_order.order_items.new
+    @order_item =current_order.order_items.new  if current_user
+    authorize! :read, @product
   end
 
   def new

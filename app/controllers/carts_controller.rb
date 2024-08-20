@@ -23,5 +23,4 @@ class CartsController < ApplicationController
   def order_params
     params.require(:order).permit(:shipping, :billing)
   end
-
 end

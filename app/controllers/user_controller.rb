@@ -1,4 +1,6 @@
 class UserController < ApplicationController
+  load_and_authorize_resource
+
   def index; end
 
   def list
@@ -22,10 +24,12 @@ class UserController < ApplicationController
 
   def edit
     @user=User.find(params[:id])
+    authorize! :read, @user
   end
 
   def update
     @user=User.find(params[:id])
+    authorize! :read, @user
     if @user.update(update_params)
       redirect_to list_user_path
     else
@@ -35,6 +39,7 @@ class UserController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
+    authorize! :read, @user
     @user.destroy
     flash[:notice] = "You have deleted the user."
     redirect_to list_user_path, status: :see_other
