@@ -81,3 +81,5 @@ gem "wicked", "~> 2.0"
 gem "ransack", "~> 4.2"
 
 gem 'will_paginate-bootstrap4'
+
+gem "cancancan", "~> 3.6"
