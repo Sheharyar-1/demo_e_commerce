@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  get 'orders/index'
-  get 'products/index'
   root 'products#index'
-  get 'user/list', to: 'user#list', as: 'list_user'
   patch 'carts/placed', to: 'carts#placed', as: 'placed_order'
   get 'carts/address', to: 'carts#address', as: 'order_address'
 

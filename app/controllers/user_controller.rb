@@ -1,10 +1,11 @@
 class UserController < ApplicationController
   load_and_authorize_resource
 
-  def index; end
+  def index
+    @users = User.paginate(page: params[:page], per_page: 10)
+  end
 
   def list
-    @users = User.paginate(page: params[:page], per_page: 10)
   end
 
   def new
@@ -15,23 +16,21 @@ class UserController < ApplicationController
     @user=User.new(user_params)
     if @user.save
       @user.send_reset_password_instructions
-      redirect_to list_user_path
+      redirect_to user_index_path
     else
       flash[:danger] = "Could not create a user."
-      redirect_to list_user_path
+      redirect_to user_index_path
     end
   end
 
   def edit
     @user=User.find(params[:id])
-    authorize! :read, @user
   end
 
   def update
     @user=User.find(params[:id])
-    authorize! :read, @user
     if @user.update(update_params)
-      redirect_to list_user_path
+      redirect_to user_index_path
     else
       render :edit, status: :unprocessable_entity
     end
@@ -39,10 +38,9 @@ class UserController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    authorize! :read, @user
     @user.destroy
     flash[:notice] = "You have deleted the user."
-    redirect_to list_user_path, status: :see_other
+    redirect_to user_index_path, status: :see_other
   end
   
   private
