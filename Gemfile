@@ -68,6 +68,8 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
 end
 
 gem "devise", "~> 4.9"
@@ -83,3 +85,5 @@ gem "ransack", "~> 4.2"
 gem 'will_paginate-bootstrap4'
 
 gem "cancancan", "~> 3.6"
+
+gem "rspec-rails", "~> 6.1"
