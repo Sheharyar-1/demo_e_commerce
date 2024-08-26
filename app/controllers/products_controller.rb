@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   
   def index
     @q = Product.ransack(params[:q])
-    @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 5)
+    @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 8)
 
     case params.dig(:q, :s)
     when 'price asc'
@@ -20,7 +20,6 @@ class ProductsController < ApplicationController
 
   def show
     @order_item =current_order.order_items.new  if current_user
-    authorize! :read, @product
   end
 
   def new

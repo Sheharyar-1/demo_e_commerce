@@ -6,8 +6,11 @@ class Ability
 
     if user.admin?
       can :manage, :all
+    elsif user.staff?
+      can :update, Product
+      can :manage, User, id: user.id
+      can :read, Product
     else
-      can :read, Order, user_id: user.id
       can :read, Product
       can :update, Order, status: 'in_progress'
       can :manage, User, id: user.id
