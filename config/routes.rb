@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'products#index'
+  
   patch 'carts/placed', to: 'carts#placed', as: 'placed_order'
   get 'carts/address', to: 'carts#address', as: 'order_address'
 
@@ -13,4 +14,11 @@ Rails.application.routes.draw do
     resources :multi_step
   end
 
+  namespace :api do
+    namespace :v1 do
+      resources :products, only: [:index, :create, :update, :destroy]
+      resources :order_items, only: [:create, :update, :destroy]
+      resources :orders, only: [:update]
+    end
+  end
 end
