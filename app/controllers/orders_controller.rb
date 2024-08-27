@@ -6,7 +6,6 @@ class OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    authorize! :update, @order
     if @order.update(order_params)
       redirect_to orders_path, notice: 'Order status updated successfully.'
     else

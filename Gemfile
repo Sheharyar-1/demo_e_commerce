@@ -87,3 +87,5 @@ gem 'will_paginate-bootstrap4'
 gem "cancancan", "~> 3.6"
 
 gem "rspec-rails", "~> 6.1"
+
+gem 'ngrok-tunnel'
