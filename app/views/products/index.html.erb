@@ -1,19 +1,31 @@
 <div class="container-fluid mt-4">
-  <div class="row mb-4">
-    <div class="col-md-12">
-      <div class="d-flex justify-content-between align-items-center">
-        <h1 class="text-center flex-grow-1">Products</h1>
-        <% if user_signed_in? %>
-          <% if current_user.admin? || current_user.staff? %>
-            <%= link_to "Add Product", new_product_path, class: "btn btn-primary ms-3" %>
-          <% end %>
-        <% end %>
+  <div id="carouselExampleCaptions" class="carousel slide mb-5" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <%= image_tag("ban1.jpg", class: "d-block w-100", alt: "Banner 1") %>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag("ban2.jpg", class: "d-block w-100", alt: "Banner 2") %>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag("ban3.jpg", class: "d-block w-100", alt: "Banner 3") %>
       </div>
     </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
+
   <div class="row">
-    <div class="col-md-2 me-5">
-      <div class="card border-0 shadow-sm mb-4">
+    <h1 class="text-center mb-5">Products</h1>
+
+    <div class="col-md-2 mb-4">
+      <div class="card border-0 shadow-sm">
         <div class="card-header bg-primary text-white">
           <h5 class="card-title mb-0">Filter By</h5>
         </div>
@@ -40,7 +52,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-10">
       <div class="row">
         <%= render "card" %>
       </div>
