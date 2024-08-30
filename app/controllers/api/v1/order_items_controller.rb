@@ -5,6 +5,7 @@ module Api
       def create
         @user=User.find(params[:user_id])
         @order = @user.order.new
+        @order.user.name = @user.name
         @order_item = @order.order_items.new(order_item_params)
         @product = @order_item.product
 
@@ -51,7 +52,6 @@ module Api
         @order_item.destroy
         render json: { status: 'SUCCESS', message: 'Order item removed from cart.' }, status: :ok
       end
-
 
       private
 

@@ -8,7 +8,16 @@ Rails.application.routes.draw do
 
   resources :user, except: [:show]
   resources :order_items
-  resource :carts, only: [:show]
+  resource :carts, only: [:show] do
+    member do
+      post 'placed'
+      get 'address'
+    end
+    collection do
+      get 'success'
+      get 'cancel'
+    end
+  end
   resources :orders, only: [:index, :update]
   resources :products do 
     resources :multi_step

@@ -89,3 +89,5 @@ gem "cancancan", "~> 3.6"
 gem "rspec-rails", "~> 6.1"
 
 gem 'ngrok-tunnel'
+
+gem "stripe", "~> 12.5"
